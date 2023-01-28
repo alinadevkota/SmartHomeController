@@ -130,6 +130,10 @@ public class ControllerActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isOn) {
                 if (isOn) {
                     // The toggle is disabled
+                    message = "a";
+                    SockedTransfer socket = new SockedTransfer();
+                    socket.execute();
+
                     fan_on.setEnabled(false);
                     fan_off.setEnabled(false);
                     h_on.setEnabled(false);
@@ -140,6 +144,10 @@ public class ControllerActivity extends AppCompatActivity {
                     h_off.setBackgroundColor(Color.GRAY);
                 } else {
                     // The toggle is enabled
+                    message = "m";
+                    SockedTransfer socket = new SockedTransfer();
+                    socket.execute();
+
                     fan_on.setEnabled(true);
                     fan_off.setEnabled(true);
                     h_on.setEnabled(true);
