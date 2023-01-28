@@ -15,4 +15,10 @@
     <color name="blue_pd">#002f6c</color>
     <color name="blue_sl">#63ccff</color>
     <color name="blue_sd">#006db3</color>
+    <color name="red_off">#AD2B36</color>
+    <color name="green_switch">#4CAF50</color>
+    <color name="switch_bg">#4CAF50</color>
+    <color name="switch_track">#323932</color>
+    <color name="switch_thumb">#FFC107</color>
+
 </resources>

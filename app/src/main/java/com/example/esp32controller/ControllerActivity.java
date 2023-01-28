@@ -1,9 +1,12 @@
 package com.example.esp32controller;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +23,8 @@ public class ControllerActivity extends AppCompatActivity {
     public static int port=0;
     public static String message="";
 
-    Button btn_up, btn_down, btn_left, btn_right, btn_stop, fist_open, fist_close;
-    Button wrist_up, wrist_down, arm_up, arm_down, elbow_up, elbow_down, base_cw, base_acw;
+    Button b1_on, b1_off, b2_on, b2_off, fan_on, fan_off, h_on, h_off;
+    Switch auto_temp;
     TextView tv_address;
 
     @Override
@@ -38,89 +41,19 @@ public class ControllerActivity extends AppCompatActivity {
 
         tv_address = findViewById(R.id.address_id);
 
-        btn_up = findViewById(R.id.btop_id);
-        btn_down = findViewById(R.id.bbottom_id);
-        btn_left = findViewById(R.id.bleft_id);
-        btn_right = findViewById(R.id.bright_id);
-        btn_stop = findViewById(R.id.bstop_id);
-
-        fist_open = findViewById(R.id.f_open_id);
-        fist_close = findViewById(R.id.f_close_id);
-        wrist_up = findViewById(R.id.w_up_id);
-        wrist_down = findViewById(R.id.w_down_id);
-        arm_up = findViewById(R.id.a_up_id);
-        arm_down = findViewById(R.id.a_down_id);
-        elbow_up = findViewById(R.id.e_up_id);
-        elbow_down = findViewById(R.id.e_down_id);
-        base_cw = findViewById(R.id.b_cw_id);
-        base_acw = findViewById(R.id.b_acw_id);
+        b1_on = findViewById(R.id.b1_on_id);
+        b1_off = findViewById(R.id.b1_off_id);
+        b2_on = findViewById(R.id.b2_on_id);
+        b2_off = findViewById(R.id.b2_off_id);
+        fan_on = findViewById(R.id.fan_on_id);
+        fan_off = findViewById(R.id.fan_off_id);
+        h_on = findViewById(R.id.h_on_id);
+        h_off = findViewById(R.id.h_off_id);
+        auto_temp = findViewById(R.id.auto_temp_id);
 
         tv_address.setText(address);
 
-        btn_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "g";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        btn_down.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "b";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        btn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "l";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        btn_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "r";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        btn_stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "s";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        fist_open.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "o";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        fist_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = "c";
-                SockedTransfer socket = new SockedTransfer();
-                socket.execute();
-            }
-        });
-
-        wrist_up.setOnClickListener(new View.OnClickListener() {
+        b1_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "0";
@@ -129,7 +62,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        wrist_down.setOnClickListener(new View.OnClickListener() {
+        b1_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "1";
@@ -138,7 +71,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        arm_up.setOnClickListener(new View.OnClickListener() {
+        b2_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "2";
@@ -147,7 +80,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        arm_down.setOnClickListener(new View.OnClickListener() {
+        b2_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "3";
@@ -156,7 +89,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        elbow_up.setOnClickListener(new View.OnClickListener() {
+        fan_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "4";
@@ -165,7 +98,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        elbow_down.setOnClickListener(new View.OnClickListener() {
+        fan_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "5";
@@ -174,7 +107,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        base_cw.setOnClickListener(new View.OnClickListener() {
+        h_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "6";
@@ -183,12 +116,39 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        base_acw.setOnClickListener(new View.OnClickListener() {
+        h_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = "7";
                 SockedTransfer socket = new SockedTransfer();
                 socket.execute();
+            }
+        });
+
+        auto_temp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isOn) {
+                if (isOn) {
+                    // The toggle is disabled
+                    fan_on.setEnabled(false);
+                    fan_off.setEnabled(false);
+                    h_on.setEnabled(false);
+                    h_off.setEnabled(false);
+                    fan_on.setBackgroundColor(Color.GRAY);
+                    fan_off.setBackgroundColor(Color.GRAY);
+                    h_on.setBackgroundColor(Color.GRAY);
+                    h_off.setBackgroundColor(Color.GRAY);
+                } else {
+                    // The toggle is enabled
+                    fan_on.setEnabled(true);
+                    fan_off.setEnabled(true);
+                    h_on.setEnabled(true);
+                    h_off.setEnabled(true);
+                    fan_on.setBackgroundColor(getResources().getColor(R.color.blue_p));
+                    fan_off.setBackgroundColor(getResources().getColor(R.color.red_off));
+                    h_on.setBackgroundColor(getResources().getColor(R.color.blue_p));
+                    h_off.setBackgroundColor(getResources().getColor(R.color.red_off));
+                }
             }
         });
 
