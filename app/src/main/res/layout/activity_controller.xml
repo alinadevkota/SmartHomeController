@@ -30,8 +30,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <Switch
             android:id="@+id/auto_temp_id"
             android:layout_width="wrap_content"
@@ -48,15 +51,23 @@
             android:textOff="-"
             android:textOn="ON">
         </Switch>
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text=""
-
+            <TextView
+                android:id="@+id/tv_temp_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
             />
+            <TextView
+                android:id="@+id/tv_humidity_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -69,12 +80,30 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/voice_ctrl_id"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:gravity="center_vertical|center_horizontal"
+                android:drawableRight="@drawable/mic_icon"
+                android:paddingLeft="40dp"
+                ></Button>
+
+
+        </LinearLayout>
+
 
 
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20pt"
             android:layout_marginRight="20pt"
             android:gravity="center_horizontal"
@@ -101,7 +130,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="45dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5pt"
                     android:layout_marginRight="5pt"
@@ -146,7 +175,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="45dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5pt"
@@ -192,7 +221,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="45dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5pt"
                     android:layout_marginRight="5pt"
@@ -236,7 +265,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="45dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5pt"
                     android:layout_marginRight="5pt"
